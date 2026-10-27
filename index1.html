@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #04AA6D;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #04AA6D;
+            padding-bottom: 8px;
+        }
+
+        button {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #038857;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px 0;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .hasil {
+            background-color: #e7f7ef;
+            padding: 12px;
+            border-radius: 5px;
+            min-height: 20px;
+        }
+
+        section {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Latihan JavaScript</h1>
+    <p>Belajar JavaScript Dasar seperti W3Schools</p>
+
+    <section>
+        <h2>1. Menampilkan Teks</h2>
+        <button onclick="tampilTeks()">Klik Saya</button>
+        <p id="teks" class="hasil">Hasil akan muncul di sini.</p>
+    </section>
+
+    <section>
+        <h2>2. Variabel dan Penjumlahan</h2>
+        <p id="penjumlahan" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>3. Mengubah Warna</h2>
+        <p id="warna">JavaScript dapat mengubah tampilan HTML.</p>
+        <button onclick="ubahWarna()">Ubah Warna</button>
+    </section>
+
+    <section>
+        <h2>4. Percabangan If Else</h2>
+        <label>Masukkan nilai kamu:</label><br>
+        <input type="number" id="nilai" placeholder="Contoh: 85">
+        <br>
+        <button onclick="cekNilai()">Periksa Nilai</button>
+        <p id="hasilNilai" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>5. Perulangan For</h2>
+        <button onclick="hitungAngka()">Tampilkan Angka</button>
+        <p id="angka" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>6. Fungsi JavaScript</h2>
+        <label>Masukkan nama:</label><br>
+        <input type="text" id="nama" placeholder="Nama kamu">
+        <br>
+        <button onclick="sapaNama()">Sapa Saya</button>
+        <p id="sapaan" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>7. Array</h2>
+        <button onclick="tampilBuah()">Tampilkan Buah</button>
+        <p id="buah" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>8. Kalkulator Sederhana</h2>
+        <input type="number" id="angka1" placeholder="Angka pertama">
+        <br>
+        <input type="number" id="angka2" placeholder="Angka kedua">
+        <br>
+
+        <button onclick="hitung('+')">Tambah (+)</button>
+        <button onclick="hitung('-')">Kurang (-)</button>
+        <button onclick="hitung('*')">Kali (*)</button>
+        <button onclick="hitung('/')">Bagi (/)</button>
+
+        <p id="hasilKalkulator" class="hasil"></p>
+    </section>
+
+</div>
+
+<script>
+    // 1. Menampilkan teks
+    function tampilTeks() {
+        document.getElementById("teks").innerHTML =
+            "Halo! Saya sedang belajar JavaScript.";
+    }
+
+    // 2. Variabel dan penjumlahan
+    let a = 10;
+    let b = 20;
+    let hasil = a + b;
+
+    document.getElementById("penjumlahan").innerHTML =
+        a + " + " + b + " = " + hasil;
+
+    // 3. Mengubah warna
+    function ubahWarna() {
+        document.getElementById("warna").style.color = "red";
+    }
+
+    // 4. Percabangan if else
+    function cekNilai() {
+        let nilai = document.getElementById("nilai").value;
+        let hasil = document.getElementById("hasilNilai");
+
+        if (nilai === "") {
+            hasil.innerHTML = "Masukkan nilai terlebih dahulu.";
+        } else if (Number(nilai) < 0 || Number(nilai) > 100) {
+            hasil.innerHTML = "Nilai harus antara 0 sampai 100.";
+        } else if (Number(nilai) >= 75) {
+            hasil.innerHTML = "Selamat, kamu lulus!";
+        } else {
+            hasil.innerHTML = "Kamu belum lulus. Tetap semangat!";
+        }
+    }
+
+    // 5. Perulangan for
+    function hitungAngka() {
+        let teks = "";
+
+        for (let i = 1; i <= 10; i++) {
+            teks += i + " ";
+        }
+
+        document.getElementById("angka").innerHTML = teks;
+    }
+
+    // 6. Fungsi untuk menyapa nama
+    function sapaNama() {
+        let nama = document.getElementById("nama").value;
+
+        if (nama.trim() === "") {
+            document.getElementById("sapaan").innerHTML =
+                "Silakan masukkan nama kamu.";
+        } else {
+            document.getElementById("sapaan").innerHTML =
+                "Halo, " + nama + "! Semangat belajar JavaScript!";
+        }
+    }
+
+    // 7. Array
+    function tampilBuah() {
+        let buah = ["Apel", "Jeruk", "Mangga", "Pisang"];
+
+        document.getElementById("buah").innerHTML =
+            buah.join(", ");
+    }
+
+    // 8. Kalkulator sederhana
+    function hitung(operator) {
+        let angka1 = document.getElementById("angka1").value;
+        let angka2 = document.getElementById("angka2").value;
+        let hasil = document.getElementById("hasilKalkulator");
+
+        if (angka1 === "" || angka2 === "") {
+            hasil.innerHTML = "Masukkan kedua angka terlebih dahulu.";
+            return;
+        }
+
+        let x = Number(angka1);
+        let y = Number(angka2);
+        let total;
+
+        if (operator === "+") {
+            total = x + y;
+        } else if (operator === "-") {
+            total = x - y;
+        } else if (operator === "*") {
+            total = x * y;
+        } else if (operator === "/") {
+            if (y === 0) {
+                hasil.innerHTML = "Angka pembagi tidak boleh nol.";
+                return;
+            }
+
+            total = x / y;
+        }
+
+        hasil.innerHTML = "Hasil: " + total;
+    }
+</script>
+
+</body>
+</html>
